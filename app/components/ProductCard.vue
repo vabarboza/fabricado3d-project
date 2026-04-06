@@ -49,10 +49,10 @@
       <div class="product-footer">
         <span class="price">{{ product.price }}</span>
         <div class="actions">
-          <a :href="wppLink" target="_blank" class="btn btn-outline btn-sm btn-icon" title="Tirar dúvidas no WhatsApp" rel="noopener noreferrer">
+          <a :href="wppLink" target="_blank" class="btn btn-outline btn-sm btn-icon" title="Tirar dúvidas no WhatsApp" rel="noopener noreferrer" @click="trackWhatsAppClick">
             <MessageCircle class="icon-sm" /> WhatsApp
           </a>
-          <a v-if="product.externalBuyLink" :href="product.externalBuyLink" target="_blank" class="btn btn-primary btn-sm btn-icon" title="Comprar produto">
+          <a v-if="product.externalBuyLink" :href="product.externalBuyLink" target="_blank" class="btn btn-primary btn-sm btn-icon" title="Comprar produto" @click="trackBuyClick">
             <ShoppingCart class="icon-sm" /> Comprar
           </a>
         </div>
@@ -64,6 +64,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { Box, ShoppingCart, Ruler, ChevronLeft, ChevronRight, MessageCircle } from 'lucide-vue-next'
+import { track } from '@vercel/analytics'
 import { getWppLink } from '~/utils/products'
 
 const props = defineProps({
@@ -100,6 +101,14 @@ const nextImage = () => {
 }
 
 const wppLink = computed(() => getWppLink(props.product.name))
+
+const trackWhatsAppClick = () => {
+  track('click_whatsapp', { product_name: props.product.name })
+}
+
+const trackBuyClick = () => {
+  track('click_comprar', { product_name: props.product.name })
+}
 </script>
 
 <style scoped>
