@@ -48,9 +48,14 @@
 
       <div class="product-footer">
         <span class="price">{{ product.price }}</span>
-        <a :href="wppLink" target="_blank" class="btn btn-primary btn-sm btn-icon">
-          <ShoppingCart class="icon-sm" /> Comprar
-        </a>
+        <div class="actions">
+          <a :href="wppLink" target="_blank" class="btn btn-outline btn-sm btn-icon" title="Tirar dúvidas no WhatsApp" rel="noopener noreferrer">
+            <MessageCircle class="icon-sm" /> WhatsApp
+          </a>
+          <a v-if="product.externalBuyLink" :href="product.externalBuyLink" target="_blank" class="btn btn-primary btn-sm btn-icon" title="Comprar produto">
+            <ShoppingCart class="icon-sm" /> Comprar
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -58,7 +63,7 @@
 
 <script setup>
 import { ref, computed } from 'vue'
-import { Box, ShoppingCart, Ruler, ChevronLeft, ChevronRight } from 'lucide-vue-next'
+import { Box, ShoppingCart, Ruler, ChevronLeft, ChevronRight, MessageCircle } from 'lucide-vue-next'
 import { getWppLink } from '~/utils/products'
 
 const props = defineProps({
@@ -265,19 +270,34 @@ const wppLink = computed(() => getWppLink(props.product.name))
 
 .product-footer {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.85rem;
   margin-top: auto;
 }
 
 .price {
   font-weight: 700;
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   color: var(--text-main);
 }
 
-.btn-icon {
+.actions {
+  display: flex;
+  width: 100%;
   gap: 0.5rem;
+}
+
+.actions .btn {
+  flex: 1;
+  justify-content: center;
+  padding: 0.6rem 0.5rem;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.btn-icon {
+  gap: 0.4rem;
 }
 
 .btn-sm {

@@ -2,7 +2,7 @@
   <header class="navbar glass-panel">
     <div class="container navbar-content">
       <div class="logo">
-        <img src="/logo.png" alt="Logo Fábrica do 3D" class="brand-logo" />
+        <NuxtLink to="/"><img src="/logo.png" alt="Logo Fábrica do 3D" class="brand-logo" /></NuxtLink>
         <span>Fábrica do <span class="highlight">3D</span></span>
       </div>
       <nav class="nav-links">
