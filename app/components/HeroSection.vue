@@ -127,7 +127,10 @@ import { MessageCircle, Layers } from 'lucide-vue-next'
 
 @media (max-width: 576px) {
   .hero-title {
-    font-size: 2.5rem;
+    font-size: 2.1rem;
+  }
+  .hero-desc {
+    font-size: 0.95rem;
   }
   .hero-ctas {
     flex-direction: column;

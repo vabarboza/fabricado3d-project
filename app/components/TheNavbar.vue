@@ -85,8 +85,33 @@ import { Printer, MessageCircle } from 'lucide-vue-next'
 }
 
 @media (max-width: 768px) {
+  .navbar {
+    padding: 0.5rem 0.75rem;
+    width: 98%;
+  }
+
+  .logo {
+    font-size: 1rem;
+    gap: 0.4rem;
+  }
+
+  .brand-logo {
+    width: 28px;
+    height: 28px;
+  }
+
   .nav-links a:not(.btn) {
     display: none;
+  }
+
+  .btn-sm {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.75rem;
+  }
+
+  .icon-sm {
+    width: 16px;
+    height: 16px;
   }
 }
 </style>
