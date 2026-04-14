@@ -2,6 +2,7 @@
   <div>
     <HeroSection />
     <ProductCatalog />
+    <TestimonialsSection />
     <QuoteForm />
   </div>
 </template>

@@ -37,7 +37,9 @@
       <div class="category-row">
         <span class="category">{{ product.category }}</span>
       </div>
-      <h3>{{ product.name }}</h3>
+      <NuxtLink :to="`/produto/${product.id}`" class="product-title-link">
+        <h3>{{ product.name }}</h3>
+      </NuxtLink>
       
       <p class="description">{{ product.description }}</p>
       
@@ -312,5 +314,22 @@ const trackBuyClick = () => {
 .btn-sm {
   padding: 0.5rem 0.85rem;
   font-size: 0.9rem;
+}
+
+.product-title-link {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.product-title-link:hover h3 {
+  color: var(--primary);
+}
+
+.product-info h3 {
+  font-size: 1.25rem;
+  margin: 0;
 }
 </style>
