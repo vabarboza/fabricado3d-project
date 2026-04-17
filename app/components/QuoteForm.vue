@@ -22,6 +22,9 @@
             <a :href="wppQuoteLink" target="_blank" class="btn btn-primary btn-large">
               <MessageCircle class="icon-md" /> Solicitar pelo WhatsApp
             </a>
+            <a href="mailto:contato@fabricado3d.com.br" class="btn btn-outline btn-large">
+              <Mail class="icon-md" /> Enviar por E-mail
+            </a>
             <p class="small-text">Atendimento de Seg a Sex, das 9h às 18h.</p>
           </div>
         </div>
@@ -31,7 +34,7 @@
 </template>
 
 <script setup>
-import { CheckCircle, MessageCircle } from 'lucide-vue-next'
+import { CheckCircle, MessageCircle, Mail } from 'lucide-vue-next'
 
 const wppQuoteLink = "https://wa.me/5544999407976?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20or%C3%A7amento%20para%20uma%20impress%C3%A3o%203D%20personalizada."
 </script>

@@ -26,7 +26,7 @@
       <div class="footer-contact">
         <h3>Contato</h3>
         <ul>
-          <li><Mail class="icon-xs" /> contato@fabricado3d.com.br</li>
+          <li><Mail class="icon-xs" /> <a href="mailto:contato@fabricado3d.com.br" class="footer-contact-link">contato@fabricado3d.com.br</a></li>
           <li><Phone class="icon-xs" /> (44) 99999-9999</li>
           <li><MapPin class="icon-xs" /> Maringa, PR</li>
         </ul>
@@ -132,6 +132,16 @@ import { Printer, Instagram, Facebook, Twitter, Mail, Phone, MapPin } from 'luci
   align-items: center;
   gap: 0.5rem;
   color: var(--text-muted);
+}
+
+.footer-contact-link {
+  color: inherit;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.footer-contact-link:hover {
+  color: var(--primary);
 }
 
 .icon-xs {

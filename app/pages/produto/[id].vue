@@ -58,6 +58,9 @@
             <a v-if="product.externalBuyLink" :href="product.externalBuyLink" target="_blank" class="btn btn-outline btn-icon" title="Comprar produto externamente">
               <ShoppingCart class="icon-sm" /> Link Externo
             </a>
+            <a href="mailto:contato@fabricado3d.com.br" class="btn btn-outline btn-icon" title="Dúvidas por e-mail">
+              <Mail class="icon-sm" /> Dúvidas por E-mail
+            </a>
           </div>
         </div>
       </div>
@@ -72,7 +75,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { ArrowLeft, Box, ShoppingCart, Ruler, MessageCircle } from 'lucide-vue-next'
+import { ArrowLeft, Box, ShoppingCart, Ruler, MessageCircle, Mail } from 'lucide-vue-next'
 import { getProducts, getWppLink } from '~/utils/products'
 
 const route = useRoute()
