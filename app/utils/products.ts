@@ -2,32 +2,41 @@ export const getProducts = () => {
   return [
     {
       id: 1,
-      name: 'Suporte Articulado',
-      category: 'Mecânica',
-      description: 'Suporte resistente para monitores e tablets, impresso em PETG.',
-      price: 'R$ 80,00',
-      dimensions: '15cm x 10cm x 5cm',
-      images: [null, null, null],
+      name: 'Dia das Mães',
+      category: 'Decoração',
+      description: 'Lindo enfeite "Mãe Eu Te Amo" impresso em 3D. O presente perfeito para demonstrar todo seu carinho.',
+      price: 'R$ 30,00',
+      dimensions: '18cm x 9cm x 2cm',
+      images: [
+        '/images/01/dia-das-maes.jpg',
+        '/images/01/dia-das-maes-2.jpg',
+        '/images/01/dia-das-maes-3.jpg'
+      ],
       externalBuyLink: 'https://shopee.com.br'
     },
     {
       id: 2,
-      name: 'Vaso Geométrico',
+      name: 'Gatinhos se Espreguiçando',
       category: 'Decoração',
-      description: 'Vaso moderno para plantas pequenas. Impresso em PLA.',
-      price: 'R$ 45,00',
-      dimensions: '12cm x 12cm x 14cm',
-      images: [null, null, null],
+      description: 'Adoráveis gatinhos fofos se espreguiçando, perfeitos para decorar qualquer ambiente. (1 unidade)',
+      price: 'R$ 12,90',
+      dimensions: '3.2cm x 5.7cm x 4cm',
+      images: [
+        '/images/02/gatos-fofos.jpg',
+        '/images/02/gatos-fofos-1.jpg',
+        '/images/02/gatos-fofos-2.jpg',
+        '/images/02/gatos-fofos-3.jpg'
+      ],
       externalBuyLink: 'https://shopee.com.br'
     },
     {
       id: 3,
-      name: 'Action Figure - Guerreiro',
-      category: 'Colecionáveis',
-      description: 'Miniatura detalhada pronta para pintura (PLA).',
-      price: 'R$ 120,00',
-      dimensions: '8cm x 8cm x 15cm',
-      images: [null, null, null],
+      name: 'Chaveiro Pokebola',
+      category: 'Geek',
+      description: 'Capture todos eles! Chaveiro Pokebola impresso em 3D com cores vibrantes e excelente acabamento. O acessório perfeito para fãs e treinadores Pokémon.',
+      price: 'R$ 12,90',
+      dimensions: '3.5cm de diâmetro',
+      images: ['/images/03/chaveiro-pokebola-1.jpg'],
       externalBuyLink: 'https://shopee.com.br'
     },
     {
