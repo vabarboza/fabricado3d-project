@@ -73,8 +73,9 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
+import { useHead, useSeoMeta } from '#imports'
 import { ArrowLeft, Box, ShoppingCart, Ruler, MessageCircle, Mail } from 'lucide-vue-next'
 import { getProducts, getWppLink } from '~/utils/products'
 
@@ -98,6 +99,28 @@ const currentImage = computed(() => imagesArray.value[currentImageIndex.value])
 const wppLink = computed(() => {
   if (!product.value) return ''
   return getWppLink(product.value.name)
+})
+
+// SEO
+watchEffect(() => {
+  if (product.value) {
+    const title = `${product.value.name} | Fábrica do 3D`
+    const description = product.value.description
+    const image = product.value.images && product.value.images[0] ? product.value.images[0] : '/og-image.png'
+
+    useSeoMeta({
+      title,
+      ogTitle: title,
+      description,
+      ogDescription: description,
+      ogImage: image,
+      twitterCard: 'summary_large_image',
+    })
+
+    useHead({
+      title
+    })
+  }
 })
 </script>
 
