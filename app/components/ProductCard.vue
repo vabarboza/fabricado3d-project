@@ -41,7 +41,10 @@
         <h3>{{ product.name }}</h3>
       </NuxtLink>
       
-      <p class="description">{{ product.description }}</p>
+      <p class="description">
+        {{ truncatedDescription }}
+        <NuxtLink v-if="isTruncated" :to="`/produto/${product.id}`" class="see-more-link">ver mais...</NuxtLink>
+      </p>
       
       <div class="dimensions" v-if="product.dimensions">
         <Ruler class="icon-xs" />
@@ -74,6 +77,19 @@ const props = defineProps({
     type: Object,
     required: true
   }
+})
+
+const truncatedDescription = computed(() => {
+  const maxLength = 110
+  if (props.product.description && props.product.description.length > maxLength) {
+    return props.product.description.substring(0, maxLength).trim() + '...'
+  }
+  return props.product.description
+})
+
+const isTruncated = computed(() => {
+  const maxLength = 110
+  return props.product.description && props.product.description.length > maxLength
 })
 
 // Ensure there is always a fallback array if not defined
@@ -258,6 +274,19 @@ const trackBuyClick = () => {
   font-size: 0.95rem;
   margin-bottom: 1rem;
   flex-grow: 1;
+}
+
+.see-more-link {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  margin-left: 0.2rem;
+}
+
+.see-more-link:hover {
+  text-decoration: underline;
 }
 
 .dimensions {
