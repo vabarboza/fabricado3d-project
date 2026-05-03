@@ -13,7 +13,7 @@ export const getProducts = () => {
         '/images/01/dia-das-maes-2.jpg',
         '/images/01/dia-das-maes-3.jpg'
       ],
-      externalBuyLink: 'https://shopee.com.br'
+      externalBuyLink: 'https://shopee.com.br/shop/1806334716'
     },
     {
       id: 2,
@@ -29,7 +29,7 @@ export const getProducts = () => {
         '/images/02/gatos-fofos-2.jpg',
         '/images/02/gatos-fofos-3.jpg'
       ],
-      externalBuyLink: 'https://shopee.com.br'
+      externalBuyLink: 'https://shopee.com.br/shop/1806334716'
     },
     {
       id: 3,
@@ -41,7 +41,7 @@ export const getProducts = () => {
       images: ['/images/03/PokebolaChaveiro.png',
         '/images/03/chaveiro-pokebola-1.jpg'
       ],
-      externalBuyLink: 'https://shopee.com.br'
+      externalBuyLink: 'https://shopee.com.br/shop/1806334716'
     },
     {
       id: 4,
@@ -56,7 +56,7 @@ export const getProducts = () => {
         '/images/04/senhor-dos-aneis.jpg',
         '/images/04/senhor-dos-aneis-2.jpg'
       ],
-      externalBuyLink: 'https://shopee.com.br'
+      externalBuyLink: 'https://shopee.com.br/shop/1806334716'
     }
   ]
 }
