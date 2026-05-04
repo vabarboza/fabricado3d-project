@@ -76,14 +76,10 @@ export const getProducts = () => {
                     ✔ Perfeito para organizar e decorar 
 
                     🎮 Ideal para: 
-
-                    Setup gamer  
-
-                    Organização da mesa  
-
-                    Presente para gamers  
-
-                    Quem aprecia estilo diferenciado  
+                    ✔ Setup gamer 
+                    ✔ Organização da mesa  
+                    ✔ Presente para gamers  
+                    ✔ Quem aprecia estilo diferenciado  
 
                     🎨 Personalize do seu jeito! 
                     Escolha cores e deixe com a sua identidade. 
