@@ -57,6 +57,46 @@ export const getProducts = () => {
         '/images/04/senhor-dos-aneis-2.jpg'
       ],
       externalBuyLink: 'https://shopee.com.br/shop/1806334716'
+    },
+    {
+      id: 5,
+      name: 'Suporte para Controle Gamer',
+      category: 'Geek',
+      description: `🎮🔥 SEU CONTROLE MERECE UM LUGAR À ALTURA! 
+
+                    Chega de deixar seu controle jogado na mesa 😅 
+                    Olha esse suporte… é decoração + funcionalidade em um só produto! 
+
+                    💀✨ Design insano estilo gamer que transforma seu setup na hora. 
+
+                    💥 Destaques: 
+                    ✔ Suporte firme e seguro 
+                    ✔ Design único e chamativo 
+                    ✔ Impressão 3D de alta qualidade 
+                    ✔ Perfeito para organizar e decorar 
+
+                    🎮 Ideal para: 
+
+                    Setup gamer  
+
+                    Organização da mesa  
+
+                    Presente para gamers  
+
+                    Quem aprecia estilo diferenciado  
+
+                    🎨 Personalize do seu jeito! 
+                    Escolha cores e deixe com a sua identidade. 
+
+                    📦 Enviamos para todo o Brasil 
+
+                    👇 Viu isso e já pensou no seu setup, né?`,
+      price: 'R$ 49,90',
+      dimensions: 'Consulte',
+      images: [
+        '/images/05/SuporteHornetPS.png'
+      ],
+      externalBuyLink: 'https://shopee.com.br/shop/1806334716'
     }
   ]
 }

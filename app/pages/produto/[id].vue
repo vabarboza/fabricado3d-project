@@ -171,7 +171,6 @@ watchEffect(() => {
 }
 
 .main-image {
-  aspect-ratio: 4/3;
   background-color: var(--bg-color);
   border-radius: 8px;
   overflow: hidden;
@@ -182,9 +181,9 @@ watchEffect(() => {
 }
 
 .real-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 .placeholder-main {
@@ -284,6 +283,7 @@ watchEffect(() => {
 .description-box p {
   color: var(--text-muted);
   line-height: 1.6;
+  white-space: pre-line;
 }
 
 .spec-item {
