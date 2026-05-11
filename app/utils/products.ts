@@ -80,6 +80,7 @@ export const getProducts = () => {
                     ✔ Organização da mesa  
                     ✔ Presente para gamers  
                     ✔ Quem aprecia estilo diferenciado
+                    ✔ Quem aprecia estilo diferenciado
 
                     📦 Enviamos para todo o Brasil 
 
