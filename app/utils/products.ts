@@ -79,10 +79,7 @@ export const getProducts = () => {
                     ✔ Setup gamer 
                     ✔ Organização da mesa  
                     ✔ Presente para gamers  
-                    ✔ Quem aprecia estilo diferenciado  
-
-                    🎨 Personalize do seu jeito! 
-                    Escolha cores e deixe com a sua identidade. 
+                    ✔ Quem aprecia estilo diferenciado
 
                     📦 Enviamos para todo o Brasil 
 
@@ -91,6 +88,32 @@ export const getProducts = () => {
       dimensions: 'Consulte',
       images: [
         '/images/05/SuporteHornetPS.png'
+      ],
+      externalBuyLink: 'https://shopee.com.br/shop/1806334716'
+    },
+    {
+      id: 6,
+      name: 'Letreiro Senhor dos Aneis - Dourado',
+      category: 'Geek',
+      description: `⚔️✨ Leve a magia da Terra-Média para sua coleção! ✨⚔️
+
+                  Para os verdadeiros fãs de fantasia, aventura e histórias épicas!
+                  Essa decoração inspirada em The Lord of the Rings é perfeita para transformar qualquer cantinho em um cenário digno da Terra-Média. 🧙‍♂️💍
+
+                  🔥 Detalhes incríveis e acabamento de alta qualidade
+                  🔥 Ideal para estantes, mesas gamer, escritórios e setups
+                  🔥 Presente perfeito para fãs da saga
+                  🔥 Produção em impressão 3D com muito cuidado e precisão
+
+                  Uma peça que carrega o espírito da amizade, coragem e aventura que marcou gerações!
+
+                  🎁 Garanta já a sua antes que o estoque acabe!
+                  📦 Enviamos para todo o Brasil
+                  🛒 Disponível também na Shopee!`,
+      price: 'R$ 49,90',
+      dimensions: 'Consulte',
+      images: [
+        '/images/06/SenhorAneisDourado.png',
       ],
       externalBuyLink: 'https://shopee.com.br/shop/1806334716'
     }
