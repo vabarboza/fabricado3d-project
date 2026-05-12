@@ -29,7 +29,7 @@ export const getProducts = () => {
         '/images/02/gatos-fofos-2.jpg',
         '/images/02/gatos-fofos-3.jpg'
       ],
-      externalBuyLink: 'https://shopee.com.br/shop/1806334716'
+      externalBuyLink: 'https://shopee.com.br/product/1806334716/58259234916/'
     },
     {
       id: 3,
