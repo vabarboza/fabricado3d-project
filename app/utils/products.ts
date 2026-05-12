@@ -13,7 +13,7 @@ export const getProducts = () => {
         '/images/01/dia-das-maes-2.jpg',
         '/images/01/dia-das-maes-3.jpg'
       ],
-      externalBuyLink: 'https://shopee.com.br/shop/1806334716'
+      externalBuyLink: 'https://shopee.com.br/product/1806334716/58260067376/'
     },
     {
       id: 2,
