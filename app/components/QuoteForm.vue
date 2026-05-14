@@ -9,7 +9,7 @@
           </p>
           <ul class="quote-benefits">
             <li><CheckCircle class="benefit-icon" /> Análise gratuita do seu arquivo 3D</li>
-            <li><CheckCircle class="benefit-icon" /> Escolha de material (PLA, PETG, ABS)</li>
+            <li><CheckCircle class="benefit-icon" /> Escolha de material (PLA, PETG)</li>
             <li><CheckCircle class="benefit-icon" /> Opções de resolução e preenchimento</li>
             <li><CheckCircle class="benefit-icon" /> Orçamento rápido via WhatsApp</li>
           </ul>
