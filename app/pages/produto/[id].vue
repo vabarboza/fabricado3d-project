@@ -8,8 +8,8 @@
       <div class="product-content">
         <!-- Gallery -->
         <div class="product-gallery">
-          <div class="main-image">
-            <img v-if="currentImage" :src="currentImage" :alt="product.name" class="real-image" />
+          <div class="main-image overflow-hidden">
+            <img v-if="currentImage" :src="currentImage" :alt="product.name" class="real-image" @click="openLightbox" />
             <div v-else class="placeholder-main">
               <Box class="icon-xl" />
               <span>Imagem {{ currentImageIndex + 1 }}</span>
@@ -70,13 +70,45 @@
       <NuxtLink to="/catalogo" class="btn btn-primary">Voltar ao Catálogo</NuxtLink>
     </div>
   </div>
+
+  <!-- Lightbox Modal -->
+  <Teleport to="body">
+    <div v-if="isLightboxOpen" class="lightbox-overlay" @click.self="closeLightbox">
+      <button class="lightbox-close" @click="closeLightbox">
+        <X class="icon-lg" />
+      </button>
+      
+      <div class="lightbox-content" @click.stop>
+        <button v-if="imagesArray.length > 1" @click.stop="prevLightboxImage" class="lightbox-btn left-btn">
+          <ChevronLeft class="icon-lg" />
+        </button>
+        
+        <img :src="imagesArray[lightboxIndex]" :alt="product?.name" class="lightbox-img" :key="lightboxIndex" />
+        
+        <button v-if="imagesArray.length > 1" @click.stop="nextLightboxImage" class="lightbox-btn right-btn">
+          <ChevronRight class="icon-lg" />
+        </button>
+        
+        <!-- Indicators -->
+        <div v-if="imagesArray.length > 1" class="lightbox-indicators">
+          <span 
+            v-for="(img, idx) in imagesArray" 
+            :key="'lb-'+idx" 
+            class="dot"
+            :class="{ active: idx === lightboxIndex }"
+            @click="lightboxIndex = idx"
+          ></span>
+        </div>
+      </div>
+    </div>
+  </Teleport>
 </template>
 
 <script setup>
-import { ref, computed, watchEffect } from 'vue'
+import { ref, computed, watchEffect, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { useHead, useSeoMeta } from '#imports'
-import { ArrowLeft, Box, ShoppingCart, Ruler, MessageCircle, Mail } from 'lucide-vue-next'
+import { ArrowLeft, Box, ShoppingCart, Ruler, MessageCircle, Mail, ChevronLeft, ChevronRight, X } from 'lucide-vue-next'
 import { getProducts, getWppLink } from '~/utils/products'
 
 const route = useRoute()
@@ -95,6 +127,43 @@ const imagesArray = computed(() => {
 
 const currentImageIndex = ref(0)
 const currentImage = computed(() => imagesArray.value[currentImageIndex.value])
+
+// Lightbox Logic
+const isLightboxOpen = ref(false)
+const lightboxIndex = ref(0)
+
+const openLightbox = () => {
+  lightboxIndex.value = currentImageIndex.value
+  isLightboxOpen.value = true
+  document.body.style.overflow = 'hidden' // prevent scrolling
+}
+
+const closeLightbox = () => {
+  isLightboxOpen.value = false
+  document.body.style.overflow = '' // restore scrolling
+}
+
+const prevLightboxImage = () => {
+  if (lightboxIndex.value === 0) {
+    lightboxIndex.value = imagesArray.value.length - 1
+  } else {
+    lightboxIndex.value--
+  }
+}
+
+const nextLightboxImage = () => {
+  if (lightboxIndex.value === imagesArray.value.length - 1) {
+    lightboxIndex.value = 0
+  } else {
+    lightboxIndex.value++
+  }
+}
+
+onUnmounted(() => {
+  if (isLightboxOpen.value) {
+    document.body.style.overflow = ''
+  }
+})
 
 const wppLink = computed(() => {
   if (!product.value) return ''
@@ -184,6 +253,12 @@ watchEffect(() => {
   max-width: 100%;
   height: auto;
   display: block;
+  cursor: pointer;
+  transition: transform 0.4s ease;
+}
+
+.real-image:hover {
+  transform: scale(1.05);
 }
 
 .placeholder-main {
@@ -310,5 +385,140 @@ watchEffect(() => {
 .not-found {
   text-align: center;
   padding: 4rem;
+}
+
+/* Lightbox Styles */
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(10, 15, 20, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(20, 24, 32, 0.5);
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  cursor: pointer;
+  z-index: 10000;
+  padding: 10px;
+  transition: color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-close:hover {
+  color: var(--primary);
+  background: rgba(20, 24, 32, 0.9);
+  transform: scale(1.1);
+}
+
+.icon-lg {
+  width: 28px;
+  height: 28px;
+}
+
+.lightbox-content {
+  position: relative;
+  width: 90%;
+  max-width: 1000px;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 10px 50px rgba(0,0,0,0.6);
+  animation: fadeIn 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.lightbox-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(20, 24, 32, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10000;
+  transition: background 0.3s ease, transform 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.lightbox-btn:hover {
+  background: var(--primary);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.lightbox-btn.left-btn {
+  left: -20px;
+}
+
+.lightbox-btn.right-btn {
+  right: -20px;
+}
+
+.lightbox-indicators {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+}
+
+.lightbox-indicators .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+.lightbox-indicators .dot.active {
+  background: var(--primary);
+}
+
+.lightbox-indicators .dot:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+@media (max-width: 768px) {
+  .lightbox-btn {
+    width: 40px;
+    height: 40px;
+  }
+  .lightbox-btn.left-btn { left: 0px; }
+  .lightbox-btn.right-btn { right: 0px; }
+  .lightbox-content { height: 70vh; }
 }
 </style>

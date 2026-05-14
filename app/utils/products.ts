@@ -114,7 +114,7 @@ export const getProducts = () => {
       price: 'R$ 49,90',
       dimensions: 'Consulte',
       images: [
-        '/images/06/SenhorAneisDourado.png',
+        '/images/06/SenhorDourado.png',
       ],
       externalBuyLink: 'https://shopee.com.br/shop/1806334716'
     }
