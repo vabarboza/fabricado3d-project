@@ -40,12 +40,27 @@
       </div>
       
       <div class="hero-image-wrapper">
-        <div class="hero-image glass-panel floating">
-          <img src="~/assets/images/mainImage.webp" alt="Impressão 3D de alta qualidade" class="hero-img-element" />
+        <div class="hero-mural">
+          <div class="mural-item item-1 floating-slow">
+            <img src="/images/04/LordOfRings.png" alt="Senhor dos Anéis" class="mural-img" />
+          </div>
+          <div class="mural-item item-2 floating-medium">
+            <img src="/images/02/GatoGordo.png" alt="Gato Gordo" class="mural-img" />
+          </div>
+          <div class="mural-item item-3 floating-fast">
+            <img src="/images/03/PokebolaChaveiro.png" alt="Pokébola" class="mural-img" />
+          </div>
+          <div class="mural-item item-4 floating-slow-delay">
+            <img src="/images/05/SuporteHornetPS.png" alt="Suporte" class="mural-img" />
+          </div>
+          <div class="mural-item item-5 floating-medium-delay">
+            <img src="/images/06/SenhorAneisDourado.png" alt="Anéis Dourados" class="mural-img" />
+          </div>
+          
+          <!-- Decorative 3D elements floating around -->
+          <div class="floating-badge badge-1 glass-panel">⚙️ Alta Precisão</div>
+          <div class="floating-badge badge-2 glass-panel">🎨 Cores Vibrantes</div>
         </div>
-        <!-- Decorative 3D elements floating around -->
-        <div class="floating-badge badge-1 glass-panel">⚙️ Alta Precisão</div>
-        <div class="floating-badge badge-2 glass-panel">🎨 Cores Vibrantes</div>
       </div>
     </div>
   </section>
@@ -220,35 +235,125 @@ import { MessageCircle, Layers } from 'lucide-vue-next'
   letter-spacing: 1px;
 }
 
-/* Image Section */
+/* Image Mural Section */
 .hero-image-wrapper {
   position: relative;
-}
-
-.hero-image {
-  aspect-ratio: 1;
-  border-radius: 24px;
+  width: 100%;
+  height: 550px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, rgba(30, 36, 48, 0.8), rgba(20, 24, 32, 0.9));
+}
+
+.hero-mural {
   position: relative;
-  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.mural-item {
+  position: absolute;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(30, 36, 48, 0.7), rgba(20, 24, 32, 0.9));
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.mural-item:hover {
+  transform: translate(var(--tx, 0), var(--ty, 0)) rotate(var(--rot, 0deg)) scale(1.08) translateY(-10px) !important;
+  box-shadow: 0 25px 45px rgba(230, 92, 0, 0.4);
+  z-index: 10 !important;
+  border-color: rgba(230, 92, 0, 0.5);
+  animation-play-state: paused;
+}
+
+.mural-img {
+  width: 85%;
+  height: 85%;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
+}
+
+/* Positions and Sizes */
+.item-1 {
+  width: 300px;
+  height: 300px;
+  top: 50%;
+  left: 50%;
+  --tx: -50%;
+  --ty: -50%;
+  --rot: 0deg;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  background: linear-gradient(135deg, rgba(230, 92, 0, 0.15), rgba(20, 24, 32, 0.95));
+  border: 1px solid rgba(230, 92, 0, 0.4);
+}
+
+.item-2 {
+  width: 180px;
+  height: 180px;
+  top: 5%;
+  left: 5%;
+  --tx: 0;
+  --ty: 0;
+  --rot: -8deg;
+  transform: rotate(-8deg);
+  z-index: 3;
+}
+
+.item-3 {
+  width: 220px;
+  height: 220px;
+  bottom: 10%;
+  right: 0%;
+  --tx: 0;
+  --ty: 0;
+  --rot: 6deg;
+  transform: rotate(6deg);
+  z-index: 6;
+}
+
+.item-4 {
+  width: 160px;
+  height: 160px;
+  top: 10%;
+  right: 5%;
+  --tx: 0;
+  --ty: 0;
+  --rot: 12deg;
+  transform: rotate(12deg);
   z-index: 2;
 }
 
-.floating {
-  animation: float 6s infinite ease-in-out;
+.item-5 {
+  width: 190px;
+  height: 190px;
+  bottom: 5%;
+  left: 10%;
+  --tx: 0;
+  --ty: 0;
+  --rot: -5deg;
+  transform: rotate(-5deg);
+  z-index: 4;
 }
 
-.hero-img-element {
-  max-width: 90%;
-  max-height: 90%;
-  object-fit: contain;
-  border-radius: 12px;
-  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.4));
+/* Animations */
+.floating-slow { animation: float-mural 7s infinite ease-in-out; }
+.floating-medium { animation: float-mural 5s infinite ease-in-out 1s; }
+.floating-fast { animation: float-mural 4s infinite ease-in-out 2s; }
+.floating-slow-delay { animation: float-mural 6s infinite ease-in-out 3s; }
+.floating-medium-delay { animation: float-mural 5.5s infinite ease-in-out 1.5s; }
+
+@keyframes float-mural {
+  0% { transform: translate(var(--tx, 0), var(--ty, 0)) rotate(var(--rot, 0deg)) translateY(0); }
+  50% { transform: translate(var(--tx, 0), var(--ty, 0)) rotate(var(--rot, 0deg)) translateY(-15px); }
+  100% { transform: translate(var(--tx, 0), var(--ty, 0)) rotate(var(--rot, 0deg)) translateY(0); }
 }
 
 .floating-badge {
@@ -265,14 +370,14 @@ import { MessageCircle, Layers } from 'lucide-vue-next'
 }
 
 .badge-1 {
-  top: 10%;
-  right: -5%;
+  top: 0%;
+  right: -10%;
   animation: float 5s infinite ease-in-out 1s;
 }
 
 .badge-2 {
-  bottom: 15%;
-  left: -5%;
+  bottom: 0%;
+  left: -10%;
   animation: float 7s infinite ease-in-out 2s;
 }
 
@@ -301,8 +406,13 @@ import { MessageCircle, Layers } from 'lucide-vue-next'
     justify-content: center;
   }
   
-  .badge-1 { right: 5%; }
-  .badge-2 { left: 5%; }
+  .hero-image-wrapper {
+    height: 450px;
+    transform: scale(0.9);
+  }
+  
+  .badge-1 { right: 5%; top: 10%; }
+  .badge-2 { left: 5%; bottom: 10%; }
 }
 
 @media (max-width: 576px) {
@@ -319,6 +429,11 @@ import { MessageCircle, Layers } from 'lucide-vue-next'
     flex-wrap: wrap;
     gap: 1.5rem;
     justify-content: center;
+  }
+  .hero-image-wrapper {
+    height: 350px;
+    transform: scale(0.7);
+    margin-top: -30px;
   }
 }
 </style>
