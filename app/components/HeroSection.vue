@@ -54,7 +54,7 @@
             <img src="/images/05/SuporteHornetPS.png" alt="Suporte" class="mural-img" />
           </div>
           <div class="mural-item item-5 floating-medium-delay">
-            <img src="/images/06/SenhorAneisDourado.png" alt="Anéis Dourados" class="mural-img" />
+            <img src="/images/06/SenhorDourado.png" alt="Anéis Dourados" class="mural-img" />
           </div>
           
           <!-- Decorative 3D elements floating around -->
