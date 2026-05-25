@@ -54,11 +54,16 @@
       <div class="product-footer">
         <span class="price">{{ product.price }}</span>
         <div class="actions">
-          <a :href="wppLink" target="_blank" class="btn btn-outline btn-sm btn-icon" title="Tirar dúvidas no WhatsApp" rel="noopener noreferrer" @click="trackWhatsAppClick">
+          <div class="buy-buttons">
+            <a v-if="product.externalBuyLink" :href="product.externalBuyLink" target="_blank" class="btn btn-shopee btn-sm btn-icon" title="Comprar na Shopee" rel="noopener noreferrer" @click="trackShopeeClick">
+              <ShoppingBag class="icon-sm" /> Shopee
+            </a>
+            <a v-if="product.mercadoLivreLink" :href="product.mercadoLivreLink" target="_blank" class="btn btn-ml btn-sm btn-icon" title="Comprar no Mercado Livre" rel="noopener noreferrer" @click="trackMLClick">
+              <Store class="icon-sm" /> Mercado Livre
+            </a>
+          </div>
+          <a :href="wppLink" target="_blank" class="btn btn-outline btn-sm btn-icon wpp-btn" title="Tirar dúvidas no WhatsApp" rel="noopener noreferrer" @click="trackWhatsAppClick">
             <MessageCircle class="icon-sm" /> WhatsApp
-          </a>
-          <a v-if="product.externalBuyLink" :href="product.externalBuyLink" target="_blank" class="btn btn-primary btn-sm btn-icon" title="Comprar produto" @click="trackBuyClick">
-            <ShoppingCart class="icon-sm" /> Comprar
           </a>
         </div>
       </div>
@@ -100,7 +105,7 @@
 
 <script setup>
 import { ref, computed, onUnmounted } from 'vue'
-import { Box, ShoppingCart, Ruler, ChevronLeft, ChevronRight, MessageCircle, X } from 'lucide-vue-next'
+import { Box, ShoppingCart, Ruler, ChevronLeft, ChevronRight, MessageCircle, X, ShoppingBag, Store } from 'lucide-vue-next'
 import { track } from '@vercel/analytics'
 import { getWppLink } from '~/utils/products'
 
@@ -193,8 +198,12 @@ const trackWhatsAppClick = () => {
   track('click_whatsapp', { product_name: props.product.name })
 }
 
-const trackBuyClick = () => {
-  track('click_comprar', { product_name: props.product.name })
+const trackShopeeClick = () => {
+  track('click_shopee', { product_name: props.product.name })
+}
+
+const trackMLClick = () => {
+  track('click_mercadolivre', { product_name: props.product.name })
 }
 </script>
 
@@ -399,16 +408,65 @@ const trackBuyClick = () => {
 
 .actions {
   display: flex;
+  flex-direction: column;
   width: 100%;
   gap: 0.5rem;
 }
 
-.actions .btn {
-  flex: 1;
+.buy-buttons {
+  display: flex;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.actions .btn,
+.buy-buttons .btn {
   justify-content: center;
   padding: 0.6rem 0.5rem;
   font-size: 0.85rem;
   white-space: nowrap;
+  border-radius: 8px;
+}
+
+.actions .wpp-btn {
+  width: 100%;
+  border-color: rgba(37, 211, 102, 0.3);
+  color: #25d366;
+}
+
+.actions .wpp-btn:hover {
+  background-color: rgba(37, 211, 102, 0.1);
+  border-color: #25d366;
+  color: #25d366;
+  transform: translateY(-2px);
+}
+
+.btn-shopee {
+  background-color: #ee4d2d;
+  color: #fff;
+  flex: 1;
+  box-shadow: 0 4px 12px rgba(238, 77, 45, 0.3);
+}
+
+.btn-shopee:hover {
+  background-color: #ff5a38;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(238, 77, 45, 0.5);
+}
+
+.btn-ml {
+  background-color: #fff159;
+  color: #2d3238;
+  flex: 1;
+  box-shadow: 0 4px 12px rgba(255, 241, 89, 0.2);
+}
+
+.btn-ml:hover {
+  background-color: #ffe033;
+  color: #111111;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 241, 89, 0.4);
 }
 
 .btn-icon {

@@ -52,11 +52,16 @@
           </div>
 
           <div class="actions">
-            <a :href="wppLink" target="_blank" class="btn btn-primary btn-icon" title="Tirar dúvidas no WhatsApp" rel="noopener noreferrer">
+            <div class="buy-buttons">
+              <a v-if="product.externalBuyLink" :href="product.externalBuyLink" target="_blank" class="btn btn-shopee btn-icon" title="Comprar na Shopee" rel="noopener noreferrer">
+                <ShoppingBag class="icon-sm" /> Shopee
+              </a>
+              <a v-if="product.mercadoLivreLink" :href="product.mercadoLivreLink" target="_blank" class="btn btn-ml btn-icon" title="Comprar no Mercado Livre" rel="noopener noreferrer">
+                <Store class="icon-sm" /> Mercado Livre
+              </a>
+            </div>
+            <a :href="wppLink" target="_blank" class="btn btn-wpp btn-icon" title="Comprar via WhatsApp" rel="noopener noreferrer">
               <MessageCircle class="icon-sm" /> Comprar via WhatsApp
-            </a>
-            <a v-if="product.externalBuyLink" :href="product.externalBuyLink" target="_blank" class="btn btn-outline btn-icon" title="Comprar produto externamente">
-              <ShoppingCart class="icon-sm" /> Link Externo
             </a>
             <a href="mailto:contato@fabricado3d.com.br" class="btn btn-outline btn-icon" title="Dúvidas por e-mail">
               <Mail class="icon-sm" /> Dúvidas por E-mail
@@ -108,7 +113,7 @@
 import { ref, computed, watchEffect, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { useHead, useSeoMeta } from '#imports'
-import { ArrowLeft, Box, ShoppingCart, Ruler, MessageCircle, Mail, ChevronLeft, ChevronRight, X } from 'lucide-vue-next'
+import { ArrowLeft, Box, ShoppingCart, Ruler, MessageCircle, Mail, ChevronLeft, ChevronRight, X, ShoppingBag, Store } from 'lucide-vue-next'
 import { getProducts, getWppLink } from '~/utils/products'
 
 const route = useRoute()
@@ -375,11 +380,66 @@ watchEffect(() => {
   margin-top: auto;
 }
 
+.buy-buttons {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+@media (max-width: 480px) {
+  .buy-buttons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
 .actions .btn {
   width: 100%;
   justify-content: center;
   font-size: 1.1rem;
   padding: 1rem;
+  border-radius: 8px;
+}
+
+.btn-shopee {
+  background-color: #ee4d2d;
+  color: #fff;
+  flex: 1;
+  box-shadow: 0 4px 15px rgba(238, 77, 45, 0.3);
+}
+
+.btn-shopee:hover {
+  background-color: #ff5a38;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(238, 77, 45, 0.5);
+}
+
+.btn-ml {
+  background-color: #fff159;
+  color: #2d3238;
+  flex: 1;
+  box-shadow: 0 4px 15px rgba(255, 241, 89, 0.2);
+}
+
+.btn-ml:hover {
+  background-color: #ffe033;
+  color: #111111;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 241, 89, 0.4);
+}
+
+.btn-wpp {
+  background-color: #25d366;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+.btn-wpp:hover {
+  background-color: #2ee073;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
 }
 
 .not-found {
