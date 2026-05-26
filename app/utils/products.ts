@@ -116,48 +116,17 @@ export const getProducts = () => {
                   🎁 Garanta já a sua antes que o estoque acabe!
                   📦 Enviamos para todo o Brasil
                   🛒 Disponível também na Shopee e no Mercado Livre!`,
-                  🛒 Disponível também na Shopee e no Mercado Livre!`,
       price: 'R$ 49,90',
       dimensions: 'Consulte',
       images: [
         '/images/06/SenhorDourado.png',
       ],
-      externalBuyLink: 'https://shopee.com.br/product/1806334716/58211411482/',
-      mercadoLivreLink: ''
-    },
-    {
-      id: 7,
-      name: 'Vaso Baby Groot Decorativo | Porta Planta Geek | Impressão 3D',
-      category: 'Geek',
-      description: `Deixe sua decoração mais divertida e cheia de personalidade com este incrível Vaso Baby Groot! 🌿✨
-
-                  Inspirado no personagem mais fofo da galáxia, este vaso decorativo é perfeito para suculentas, mini plantas ou apenas para decorar seu cantinho com muito estilo geek.
-
-                  🌟 Destaques do produto:
-                  ✔ Design inspirado no Baby Groot
-                  ✔ Impressão 3D de alta qualidade
-                  ✔ Ótimo acabamento e ricos detalhes
-                  ✔ Ideal para suculentas e mini plantas
-                  ✔ Perfeito para mesas, estantes, quartos e escritórios
-                  ✔ Leve, resistente e decorativo
-                  ✔ Excelente opção de presente 🎁
-                  ✔ Produto pronto para envio 🚚
-
-                  🌿 Um item encantador para fãs de decoração criativa, cultura geek e personagens icônicos!`,
-      price: 'R$ 55,00',
-      dimensions: '12cm x 72cm x 14cm',
-      images: [
-        '/images/07/01.jpg',
-        '/images/07/02.jpg',
-        '/images/07/03.jpg'
-      ],
-      externalBuyLink: '',
-      mercadoLivreLink: 'https://produto.mercadolivre.com.br/MLB-4709507073-vaso-baby-groot-decorativo-_JM'
+      externalBuyLink: 'https://shopee.com.br/shop/1806334716'
     }
   ]
 }
 
 export const getWppLink = (itemName: string) => {
-  const msg = `Olá! Gostaria de comprar o item do catálogo: ${ itemName }.`
+  const msg = `Olá! Gostaria de comprar o item do catálogo: ${itemName}.`
   return `https://wa.me/5544999407976?text=${encodeURIComponent(msg)}`
 }
