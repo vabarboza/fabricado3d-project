@@ -116,6 +116,7 @@ export const getProducts = () => {
                   🎁 Garanta já a sua antes que o estoque acabe!
                   📦 Enviamos para todo o Brasil
                   🛒 Disponível também na Shopee e no Mercado Livre!`,
+                  🛒 Disponível também na Shopee e no Mercado Livre!`,
       price: 'R$ 49,90',
       dimensions: 'Consulte',
       images: [
@@ -157,6 +158,6 @@ export const getProducts = () => {
 }
 
 export const getWppLink = (itemName: string) => {
-  const msg = `Olá! Gostaria de comprar o item do catálogo: ${itemName}.`
+  const msg = `Olá! Gostaria de comprar o item do catálogo: ${ itemName }.`
   return `https://wa.me/5544999407976?text=${encodeURIComponent(msg)}`
 }
